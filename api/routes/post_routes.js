@@ -5,7 +5,7 @@ import PostModel from "../mongoDB_models/PostModel.js";
 // Create a new router object to handle requests.
 const router = Router();
 
-//CREATE POST
+//CREATE POST-------------------------------------------------------------
 router.post("/", async (req, res) => {
   const newPost = new PostModel(req.body);
   console.log('post', newPost)
@@ -17,7 +17,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-//READ ALL POSTS
+//READ ALL POSTS-----------------------------------------------------------
 router.get("/", async (req, res) => {
   const username = req.query.username;
   const catName = req.query.cat;
@@ -41,7 +41,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-//GET POST
+//READ SNGLE POST-----------------------------------------------------------
 router.get("/:id", async (req, res) => {
   try {
     const post = await PostModel.findById(req.params.id);
@@ -52,3 +52,48 @@ router.get("/:id", async (req, res) => {
 });
 
 export default router;
+
+//UPDATE POST---------------------------------------------------------------
+router.put("/:id", async (req, res) => {
+  try {
+    const post = await PostModel.findById(req.params.id);
+    if (post.username === req.body.username) {
+      try {
+        const updatedPost = await PostModel.findByIdAndUpdate(
+          req.params.id,
+          {
+            $set: req.body,
+          },
+          { new: true }
+        );
+        res.status(200).json(updatedPost);
+      } catch (err) {
+        res.status(500).json(err);
+      }
+    } else {
+      res.status(401).json("You can update only your post!");
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//DELETE POST-------------------------------------------------------------
+router.delete("/:id", async (req, res) => {
+  try {
+    const post = await PostModel.findById(req.params.id);
+    if (post.username === req.body.username) {
+      try {
+        await post.deleteOne();
+        res.status(200).json("Post has been deleted...");
+      } catch (err) {
+        console.log("Error caught", err)
+        res.status(500).json(err);
+      }
+    } else {
+      res.status(401).json("You can delete only your post!");
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
