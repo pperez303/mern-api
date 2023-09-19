@@ -1,7 +1,7 @@
 //import the libraries
 //const router = require("express").Router();
 import { Router } from "express";
-import Category from "../mongoDB_models/Category.js";
+import CategoryModel from "../mongoDB_models/CategoryModel.js";
 
 // Create a new router object to handle requests.
 const router = Router();
@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
 // GET (read) Category --------------------------------------------------------------------
 router.get("/", async (req, res) => {
   try {
-    const cats = await Category.find();
+    const cats = await CategoryModel.find();
     res.status(200).json(cats);
   } catch (err) {
     res.status(500).json(err);
