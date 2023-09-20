@@ -7,7 +7,8 @@ import { fileURLToPath } from 'url';
 
 // Routes
 import postRoute from "./routes/post_routes.js";
-import categoryRoute from "./routes/categories.js";
+import userRoute from "./routes/user_routes.js";
+import categoryRoute from "./routes/category_route.js";
 
 const app = express();
 
@@ -31,7 +32,7 @@ connectDB();
 // Assign a URI to the route module.  Test with postman: localhost:8000/api/posts/<some post id>
 // Format app.use("URI text", imported-module);
 app.use("/api/posts", postRoute);              // Referenced by Axios in /frontend-react/pages/Home.js
-
+app.use("/api/users", userRoute);
 app.use("/api/categories", categoryRoute);
 
 app.listen("8000", () => {

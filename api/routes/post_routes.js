@@ -51,8 +51,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-export default router;
-
 //UPDATE POST---------------------------------------------------------------
 router.put("/:id", async (req, res) => {
   try {
@@ -97,3 +95,6 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
+export default router;
