@@ -25,7 +25,7 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
     console.log('UPDATE ID: ', req.params.id)
     console.log(req.body)
-  if (req.body.userId === req.params.id) {                      // called from Setting.js in handleSubmit function.
+  if (req.body._id === req.params.id) {                      // called from /pages/acctupdate.js(Setting.js) in handleSubmit function.
     if (req.body.password) {
       const salt = await bcrypt.genSalt(10);
       req.body.password = await bcrypt.hash(req.body.password, salt);

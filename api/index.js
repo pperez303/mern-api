@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url';
 import postRoute from "./routes/post_routes.js";
 import userRoute from "./routes/user_routes.js";
 import categoryRoute from "./routes/category_route.js";
+import authRoute from "./routes/auth_route.js";
 
 const app = express();
 
@@ -34,6 +35,7 @@ connectDB();
 app.use("/api/posts", postRoute);              // Referenced by Axios in /frontend-react/pages/Home.js
 app.use("/api/users", userRoute);
 app.use("/api/categories", categoryRoute);
+app.use("/api/auth", authRoute);
 
 app.listen("8000", () => {
     console.log('Express Server Has Started!')
