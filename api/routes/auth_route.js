@@ -25,12 +25,12 @@ router.post("/register", async (req, res) => {
 
 //LOGIN
 router.post("/login", async (req, res) => {
+  console.log("at auth_routes.js Login")
   try {
     const user = await UserModel.findOne({ username: req.body.username });
     //const pw = req.body.password;
     //!user && res.status(400).json("Wrong credentials!");  // this statement does not work.  replace with If statement.
     if (!user) {
-        console.log("Invalid User Name")
       return res.status(404).json("Invalid User Name");
     }
 
