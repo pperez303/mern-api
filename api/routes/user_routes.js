@@ -19,11 +19,11 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// No CREATE (Post) because add a new use is handled by the /api/auth_route/register.
+// CREATE (Post) method not required because add a new use is handled by the /api/auth_route/register.
 
 // UPDATE-------------------------------------------------------------------
 router.put("/:id", async (req, res) => {
-    console.log('UPDATE ID: ', req.params.id)
+    console.log('req params id: ', req.params.id)
     console.log(req.body)
   if (req.body._id === req.params.id) {                      // called from /pages/acctupdate.js(Setting.js) in handleSubmit function.
     if (req.body.password) {
@@ -43,6 +43,7 @@ router.put("/:id", async (req, res) => {
       res.status(500).json(err);
     }
   } else {
+    console.log('Error 401')
     res.status(401).json("You can only update your account.");
   }
 });
