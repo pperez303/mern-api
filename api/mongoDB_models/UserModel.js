@@ -7,15 +7,29 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      lowercase: true,
+      validate: {
+        validator: v => v !== "",
+        message: props => `${props.value} username cannot be an empty string.`
+      }
     },
     email: {
       type: String,
       required: true,
       unique: true,
+      lowercase: true,
+      validate: {
+        validator: v => v !== "",
+        message: props => `${props.value} email cannot be an empty string.`
+      }
     },
     password: {
       type: String,
       required: true,
+      validate: {
+        validator: v => v !== "",
+        message: props => `${props.value} password cannot be an empty string.`
+      }
     },
     profilePic: {
       type: String,

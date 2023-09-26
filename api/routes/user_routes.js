@@ -30,15 +30,28 @@ router.put("/:id", async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       req.body.password = await bcrypt.hash(req.body.password, salt);
     }
+    // old logic--------------------------------------------------------
+    // try {
+    //   const updatedUser = await UserModel.findByIdAndUpdate(
+    //     req.params.id,
+    //     {
+    //       $set: req.body,
+    //     },
+    //     { new: true }
+    //   );
+    //   res.status(200).json(updatedUser);
+    //---------------------------------------------------------------------
     try {
-      const updatedUser = await UserModel.findByIdAndUpdate(
-        req.params.id,
-        {
-          $set: req.body,
-        },
-        { new: true }
-      );
+      const updatedUser = await User.findById(req.params.id)
+      //console.log('find by ID passed')
+      //console.log('updateUser ', updatedUser)
+      updatedUser.username = req.body.username
+      updatedUser.email = req.body.email;
+      updatedUser.password = req.body.password;
+      //console.log('after username updated ', updatedUser)
+      await updatedUser.save()
       res.status(200).json(updatedUser);
+      //console.log("save Passed ", updatedUser)
     } catch (err) {
       res.status(500).json(err);
     }
