@@ -27,7 +27,7 @@ router.get("/", async (req, res) => {
     if (username) {
       posts = await PostModel.find({ username });     // get posts by username
     } else if (catName) {
-      posts = await Post.find({                       // get posts by category name
+      posts = await PostModel.find({                       // get posts by category name
         categories: {
           $in: [catName],
         },
@@ -44,9 +44,12 @@ router.get("/", async (req, res) => {
 //READ SNGLE POST-----------------------------------------------------------
 router.get("/:id", async (req, res) => {
   try {
+    console.log('at rouet.get', req.params.id)
     const post = await PostModel.findById(req.params.id);
+    console.log('success post: ', post)
     res.status(200).json(post);
   } catch (err) {
+    console.log('error  ', err)
     res.status(500).json(err);
   }
 });

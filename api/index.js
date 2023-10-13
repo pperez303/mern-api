@@ -7,7 +7,7 @@ import multer from "multer";
 import { fileURLToPath } from 'url';
 import cors from "cors";
 
-// Routes
+// Routes 
 import postRoute from "./routes/post_routes.js";
 import userRoute from "./routes/user_routes.js";
 import categoryRoute from "./routes/category_route.js";
@@ -19,8 +19,8 @@ const app = express();
 app.use(express.json());
 app.use(
     cors({
-        origin: "http://localhost:3000",           // for the react-blog-lama  - react default prot 3000
-        origin: "http://localhost:3000",           // for the MERN-CMS app.  Port set in the package.json file.
+        origin: ["http://localhost:3000", "http://localhost:3500"]           // for the react-blog-lama  - react default prot 3000
+        //origin: "http://localhost:3500",           // for the MERN-CMS app.  Port set in the package.json file.
     })
 )
 
