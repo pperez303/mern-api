@@ -42,17 +42,19 @@ router.put("/:id", async (req, res) => {
     //   res.status(200).json(updatedUser);
     //---------------------------------------------------------------------
     try {
-      const updatedUser = await User.findById(req.params.id)
-      //console.log('find by ID passed')
-      //console.log('updateUser ', updatedUser)
+      const updatedUser = await UserModel.findById(req.params.id)
+      console.log('find by ID passed')
+      console.log('updateUser ', updatedUser)
       updatedUser.username = req.body.username
       updatedUser.email = req.body.email;
-      updatedUser.password = req.body.password;
-      //console.log('after username updated ', updatedUser)
+      updatedUser.profilePic = req.body.profilePic; 
+      updatedUser.password = req.body.password;               // user must enter the password on the form for this update
+      console.log('after username updated ', updatedUser)
       await updatedUser.save()
       res.status(200).json(updatedUser);
-      //console.log("save Passed ", updatedUser)
+      console.log("save Passed ", updatedUser)
     } catch (err) {
+      console.log('ERROR Caught', err)
       res.status(500).json(err);
     }
   } else {

@@ -54,7 +54,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-//UPDATE POST---------------------------------------------------------------
+//UPDATE the post---------------------------------------------------------------
 router.put("/:id", async (req, res) => {
   try {
     const post = await PostModel.findById(req.params.id);
@@ -79,7 +79,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-//DELETE POST-------------------------------------------------------------
+//DELETE the post-------------------------------------------------------------
 router.delete("/:id", async (req, res) => {
   try {
     const post = await PostModel.findById(req.params.id);
