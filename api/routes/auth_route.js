@@ -25,25 +25,29 @@ router.post("/register", async (req, res) => {
 
 //LOGIN
 router.post("/login", async (req, res) => {
-  console.log("at auth_routes.js Login")
+  console.log("at auth_routes.js Login: ", req.body)
   try {
     const user = await UserModel.findOne({ username: req.body.username });
     //const pw = req.body.password;
     //!user && res.status(400).json("Wrong credentials!");  // this statement does not work.  replace with If statement.
     if (!user) {
       return res.status(404).json("Invalid User Name");
+      console.log("invalid user")
     }
 
     const userPassword = await bcrypt.compare(req.body.password, user.password);
     if (userPassword === false) {
+      console.log("invalid password")
       return res.status(404).json("Invalid password!");
+      
     }
 
     const { password, ...otherData } = user._doc;              // deconstruct the user elements to separate the password from the other data elements.
     res.status(200).json(otherData);                           // this will return all user elements except for the password.
-    console.log(user);
+    console.log("user = ", user);
   } catch (err) {
     res.status(500).json(err);
+    console.log("unable to find user by username")
   }
 });
 
