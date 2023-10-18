@@ -28,7 +28,7 @@ app.use(
     })
 )
 
-// ES6 does not providde direct support to __dirname.  This is an option for solving this issue.
+//   ES6 does not providde direct support to __dirname.  This is an option for solving this issue.
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 console.log('dirname: ', __dirname)
