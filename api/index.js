@@ -20,7 +20,6 @@ app.use(express.json());
 app.use(
     cors({
         origin: ["http://localhost:3000", "http://localhost:3500"]           // for the react-blog-lama  - react default prot 3000
-        //origin: "http://localhost:3500",           // for the MERN-CMS app.  Port set in the package.json file.
     })
 )
 
