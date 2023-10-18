@@ -27,6 +27,7 @@ router.put("/:id", async (req, res) => {
     console.log(req.body)
   if (req.body._id === req.params.id) {                      // called from /pages/acctupdate.js(Setting.js) in handleSubmit function.
     if (req.body.password) {
+      console.log('BODY.PASSWORd true')
       const salt = await bcrypt.genSalt(10);
       req.body.password = await bcrypt.hash(req.body.password, salt);
     }
@@ -48,13 +49,18 @@ router.put("/:id", async (req, res) => {
       updatedUser.username = req.body.username
       updatedUser.email = req.body.email;
       updatedUser.profilePic = req.body.profilePic; 
-      updatedUser.password = req.body.password;               // user must enter the password on the form for this update
+      
+      if (req.body.password) {
+        updatedUser.password = req.body.password;               // if the user enters a new password, then provide the updated password hash value, else do nothing.
+      }
+
       console.log('after username updated ', updatedUser)
       await updatedUser.save()
       res.status(200).json(updatedUser);
       console.log("save Passed ", updatedUser)
     } catch (err) {
-      console.log('ERROR Caught', err)
+      console.log('ERROR Caught')
+      console.log('ERROR =',err )
       res.status(500).json(err);
     }
   } else {
