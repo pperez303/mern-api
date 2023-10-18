@@ -17,9 +17,14 @@ import ckloadRoute from "./routes/ckloads.js";
 const app = express();
 
 app.use(express.json());
+
+// Allowed origines
 app.use(
     cors({
-        origin: ["http://localhost:3000", "http://localhost:3500"]           // for the react-blog-lama  - react default prot 3000
+        origin: [
+          "http://localhost:3000", 
+          "http://localhost:3500"
+        ]
     })
 )
 
