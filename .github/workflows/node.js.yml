@@ -26,4 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm i
+    - name: Install Deppendencies 
+      run: npm i
+      working-directory: ./api
+      
