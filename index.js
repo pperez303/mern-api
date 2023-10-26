@@ -1,3 +1,4 @@
+// index.js will be run by the PM2 process manaager in the droplet.
 import express from "express";
 //import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -67,7 +68,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/ckloads", ckloadRoute);
 
 
-// Requests are sent to Port 8000.  
+// Requests are sent to Port 8000.
 app.listen("8000", () => {
     console.log('Express Server Has Started!')
 });
