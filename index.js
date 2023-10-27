@@ -62,7 +62,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 
 // Assign a URI to the route module.  Test with postman: localhost:8000/api/posts/<some post id>
 // Format app.use("URI text", imported-module);
-app.use("/api/api/posts", postRoute);              // Referenced by Axios in /frontend-react/pages/Home.js
+app.use("/api/posts", postRoute);              // Referenced by Axios in /frontend-react/pages/Home.js
 app.use("/api/users", userRoute);
 app.use("/api/categories", categoryRoute);
 app.use("/api/auth", authRoute);
