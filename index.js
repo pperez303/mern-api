@@ -1,6 +1,7 @@
 // index.js will be run by the PM2 process manaager in the droplet.
+// to view the PM2 process: $ pm2 list
+
 import express from "express";
-//import mongoose from "mongoose";
 import dotenv from "dotenv";
 import connectDB from "./db_connect/mongoose_connect.js"
 import path from "path";
