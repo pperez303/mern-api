@@ -39,7 +39,7 @@ console.log('dirname: ', __dirname)
 //app.use "/api/images" as the path string.  But it can be anything like "images".  This routing path is used in /front-end/src/components/SinglePost.js
 app.use("/api/images", express.static(path.join(__dirname, "images"))); 
 
-// call dotenv and it will return an Object with a parsed key
+// Get the variables from the .env file.  Required for the connectDB() function for example.
 dotenv.config();                                   
 
 // Connect to Mongoose cluster and collections
