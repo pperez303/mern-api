@@ -4,7 +4,7 @@ import UserModel from "../mongoDB_models/UserModel.js"
 
 // Create a new router object to handle requests.
 const router = Router();
-
+console.log("At the auth_route file");
 //REGISTER
 router.post("/register", async (req, res) => {
   try {
