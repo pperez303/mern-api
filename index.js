@@ -25,7 +25,8 @@ app.use(
     cors({
         origin: [
           "http://localhost:3000", 
-          "http://localhost:3500"
+          "http://localhost:3500",
+          "http://blog.nubewebdev.com"
         ]
     })
 )
