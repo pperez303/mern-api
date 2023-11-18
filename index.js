@@ -9,7 +9,7 @@ import multer from "multer";
 import { fileURLToPath } from 'url';
 import cors from "cors";
 
-// Routes 
+// Routes / 
 import postRoute from "./routes/post_routes.js";
 import userRoute from "./routes/user_routes.js";
 import categoryRoute from "./routes/category_route.js";
