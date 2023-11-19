@@ -1,5 +1,6 @@
 // index.js will be run by the PM2 process manaager in the droplet.
 // to view the PM2 process: $ pm2 list
+// ci/cd configure in the droplet ~/backend-apps/api-action-runner/
 
 import express from "express";
 import dotenv from "dotenv";
@@ -26,7 +27,8 @@ app.use(
         origin: [
           "http://localhost:3000", 
           "http://localhost:3500",
-          "http://blog.nubewebdev.com"
+          "http://blog.nubewebdev.com",
+          "http://localhost:3800"
         ]
     })
 )
