@@ -25,7 +25,8 @@ router.post("/uploads", MultipartyMiddleware, (req, res) => {
 
   res.status(200).json({
     uploaded: true,
-    url: `http://localhost:8000/api/${path}`,
+    //url: `http://localhost:8000/api/${path}`,
+    url: process.env.REACT_APP_PROXY + `${path}`
   });
 });
 
