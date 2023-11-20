@@ -27,7 +27,8 @@ app.use(
         origin: [
           "http://localhost:3000", 
           "http://localhost:3500",
-          "http://blog.nubewebdev.com",
+          "https://blog.nubewebdev.com",
+          "https://cms.nubewebdev.com",
           "http://localhost:3800"
         ]
     })
