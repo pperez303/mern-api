@@ -21,14 +21,14 @@ router.post("/uploads", MultipartyMiddleware, (req, res) => {
   // console.log(req.body);
   // console.log(req.files);
   const path = req.files.upload.path;
+  const url = process.env.REACT_APP_PROXY;
   console.log(path);
-
-  console.log('env process = ', process.env.REACT_APP_PROXY)
+  console.log(url);
 
   res.status(200).json({
     uploaded: true,
-    //url: `http://localhost:8000/api/${path}`,
-    url: `https://nubewebdev.com/api/${path}`,
+    url: `${url}${path}`,
+    //url: `https://nubewebdev.com/api/${path}`,
   });
 });
 
