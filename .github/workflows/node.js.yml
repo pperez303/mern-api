@@ -29,7 +29,7 @@ jobs:
     - run: npm i
     - name: 'Create env file'
       run: |
-        echo "${{ secrets.ENV_FILE}} \n${{vars.REACT_APP_PROXY}}" > .env
+        echo -e "${{ secrets.ENV_FILE}} \n${{vars.REACT_APP_PROXY}}" > .env
 
     - name: "Run PM2"
       run: pm2 restart mern-blog-api
