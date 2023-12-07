@@ -2,6 +2,18 @@ import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema(
   {
+    articleheader: {
+      type: String,
+      required: false,
+    },
+    articlesubheader: {
+      type: String,
+      required: false,
+    },
+    modulenumber: {
+      type: String,
+      required: false,
+    },
     title: {
       type: String,
       required: true,
@@ -9,7 +21,7 @@ const PostSchema = new mongoose.Schema(
     },
     desc: {
       type: String,
-      required: true,
+      required: false,
     },
     photo: {
       type: String,

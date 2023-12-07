@@ -8,9 +8,10 @@ const router = Router();
 //CREATE POST-------------------------------------------------------------
 router.post("/", async (req, res) => {
   const newPost = new PostModel(req.body);
-  console.log('post', newPost)
-  try {
+
+  try {    console.log('test post', newPost)
     const savedPost = await newPost.save();
+
     res.status(200).json(savedPost);
   } catch (err) {
     res.status(500).json(err);
