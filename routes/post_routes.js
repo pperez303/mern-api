@@ -45,22 +45,25 @@ router.get("/", async (req, res) => {
 //READ SNGLE POST-----------------------------------------------------------
 router.get("/:id", async (req, res) => {
   try {
-    console.log('at rouet.get', req.params.id)
+    //console.log('at rouet.get', req.params.id)
     const post = await PostModel.findById(req.params.id);
-    console.log('success post: ', post)
+    //console.log('success post: ', post)
     res.status(200).json(post);
   } catch (err) {
-    console.log('error  ', err)
+    //console.log('error  ', err)
     res.status(500).json(err);
   }
 });
 
 //UPDATE the post---------------------------------------------------------------
 router.put("/:id", async (req, res) => {
+  //console.log('API req.body.username = ', req.body.username)
   try {
     const post = await PostModel.findById(req.params.id);
+    //console.log(post)
     if (post.username === req.body.username) {
       try {
+        //console.log('inside the try', req.body.username)
         const updatedPost = await PostModel.findByIdAndUpdate(
           req.params.id,
           {
@@ -89,7 +92,7 @@ router.delete("/:id", async (req, res) => {
         await post.deleteOne();
         res.status(200).json("Post has been deleted...");
       } catch (err) {
-        console.log("Error caught", err)
+        //console.log("Error caught", err)
         res.status(500).json(err);
       }
     } else {

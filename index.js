@@ -9,6 +9,7 @@ import path from "path";
 import multer from "multer";
 import { fileURLToPath } from 'url';
 import cors from "cors";
+import fs from "fs";
 
 // Routes / 
 import postRoute from "./routes/post_routes.js";
@@ -18,6 +19,7 @@ import authRoute from "./routes/auth_route.js";
 import ckloadRoute from "./routes/ckloads.js";
 
 const app = express();
+
 
 app.use(express.json());
 
@@ -37,7 +39,7 @@ app.use(
 // ES6 does not providde direct support to __dirname.  This is an option for solving this issue.
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-console.log('dirname: ', __dirname)
+//console.log('dirname: ', __dirname)
 
 // Assign a URI to a PUBLIC FOLDER to allow the front end to access the server images.
 //app.use "/api/images" as the path string.  But it can be anything like "images".  This routing path is used in /front-end/src/components/SinglePost.js
@@ -58,12 +60,28 @@ const storage = multer.diskStorage({
     },
   });
 
-// add logic here to remove the old file before inserting a new png/jpg file.
+// Upload the image888888888888888888888888888888888888888888888888888888888888888888888888888888888888
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   res.status(200).json("File has been uploaded");
 });
 
+// Remove the old Image899999999999999999999999999999999999999999999999999999999999999999999999999999989
+app.post("/api/removeoldimage/", (req, res) => {
+  const image = req.body.image;
+  console.log('deleting image : ', image)
+
+  try {
+    fs.unlinkSync(`./images/${image}`);
+    console.log("Delete File successfully.");
+  } catch (error) {
+    console.log(error);
+  }
+  res.status(200).json("IMage file has been removed");
+  //console.log("AT API remove old image file", req.body.image)
+})
+
+//0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 // Assign a URI to the route module.  Test with postman: localhost:8000/api/posts/<some post id>
 // Format app.use("URI text", imported-module);
 app.use("/api/posts", postRoute);              // Referenced by Axios in /frontend-react/pages/Home.js
