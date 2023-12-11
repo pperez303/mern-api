@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url';
 import cors from "cors";
 import fs from "fs";
 
-// Routes / 
+// the routes/ 
 import postRoute from "./routes/post_routes.js";
 import userRoute from "./routes/user_routes.js";
 import categoryRoute from "./routes/category_route.js";
