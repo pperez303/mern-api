@@ -33,7 +33,6 @@ router.post("/login", async (req, res) => {
     //!user && res.status(400).json("Wrong credentials!");  // this statement does not work.  replace with If statement.
     if (!user) {
       return res.status(404).json("Invalid User Name");
-      console.log("invalid user")
     }
 
     const userPassword = await bcrypt.compare(req.body.password, user.password);
