@@ -81,7 +81,7 @@ app.post("/api/removeoldimage/", (req, res) => {
   //console.log("AT API remove old image file", req.body.image)
 })
 
-//0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+//--------------------------------------------------------------------------------------------------
 // Assign a URI to the route module.  Test with postman: localhost:8000/api/posts/<some post id>
 // Format app.use("URI text", imported-module);
 app.use("/api/posts", postRoute);              // Referenced by Axios in /frontend-react/pages/Home.js
